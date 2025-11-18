@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Dark Sky Legislation - RMIDSR Action</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for branding */
+        :root {
+            --primary-color: #3f384d; /* RMIDSR Dark Plum/Gray */
+            --light-bg: #ffffff; /* White background */
+            --text-color: #1f2937; /* Dark Gray text */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+        }
+
+        .action-container {
+            max-width: 768px;
+            margin: 2rem auto;
+            padding: 2rem 1rem;
+            background-color: var(--light-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 15px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .step-card {
+            background-color: #f7f7f7;
+            border: 1px solid #e5e7eb;
+            padding: 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Custom style for the branded buttons */
+        .branded-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.1s;
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .branded-button:hover {
+            background-color: #5d566d; /* Slightly lighter shade for hover */
+            transform: translateY(-1px);
+        }
+
+        .copy-button {
+            cursor: pointer;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background-color: white;
+        }
+        
+        .copy-button:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .copied {
+            background-color: #10b981 !important; /* Tailwind green-500 */
+            border-color: #10b981 !important;
+            color: white !important;
+        }
+
+        .copy-text-area {
+            border: 1px dashed #cccccc;
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem; /* sm text size */
+            margin-top: 1rem;
+            white-space: pre-wrap; /* Preserve formatting */
+        }
+
+        /* Responsive layout adjustments */
+        @media (min-width: 640px) {
+            .step-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+            .step-card {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="action-container">
+
+        <!-- Header -->
+        <h1 class="text-4xl font-bold text-center mb-2" style="color: var(--primary-color);">
+            ADVOCACY ACTION PAGE
+        </h1>
+        <h2 class="text-xl text-center font-semibold mb-8 text-gray-600">
+            SUPPORT TONY ZAPPIA and ADSA to LEAD THE DARK SKY MOVEMENT
+        </h2>
+        
+        <!-- Key Deadline - REVERSED BRANDED BANNER -->
+        <div class="bg-red-50 text-white p-4 rounded-lg mb-6 border-l-4" style="background-color: var(--primary-color); border-color: #fca5a5;">
+            <p class="font-bold text-xl mb-2">Act Now: Critical Window Closing</p>
+            <p>Your local MP's support is crucial. We need to demonstrate momentum, so please send your email by **Friday, 21st November**.</p>
+            <p class="mt-2 text-sm opacity-90">**Why the deadline?** The total number of constituent letters received by this date will be collated and used to brief Mr. Zappia ahead of the motion on Monday, demonstrating widespread political support.</p>
+        </div>
+
+        <p class="mb-4 text-gray-700 text-lg leading-relaxed">
+            The Member for Makin, Tony Zappia, is presenting a critical motion in Federal Parliament to investigate national legislation to reduce light pollution. Your action is required *immediately* to secure your local MP's support for this vital step.
+        </p>
+
+        <!-- New Petition Statement -->
+        <div class="bg-yellow-50 text-gray-800 p-3 rounded-lg border border-yellow-200 mb-8 text-center font-medium">
+            This initiative is backed by the **Australasian Dark Sky Alliance (ADSA)**, following a public petition that gathered **over 12,000 voices** calling for dark sky preservation.
+        </div>
+
+        <!-- Action Steps Grid -->
+        <div class="step-grid">
+
+            <!-- Step 1: Find MP -->
+            <div class="step-card">
+                <div class="text-3xl font-bold mb-3" style="color: var(--primary-color);">Step 1</div>
+                <h3 class="text-xl font-semibold mb-4">Identify Your MP</h3>
+                <p class="mb-6 text-sm text-gray-600">You must send this request to your *local* Federal Member of Parliament.</p>
+                <a href="https://www.aph.gov.au/Senators_and_Members/Members" target="_blank" class="branded-button">
+                    Find My MP Now &rarr;
+                </a>
+            </div>
+
+            <!-- Step 2: Copy Email -->
+            <div class="step-card">
+                <div class="text-3xl font-bold mb-3" style="color: var(--primary-color);">Step 2</div>
+                <h3 class="text-xl font-semibold mb-4">Copy & Send the Email</h3>
+                <p class="mb-6 text-sm text-gray-600">Paste the copied text into a new email addressed to your MP.</p>
+                <button id="copy-btn" class="branded-button copy-button">
+                    CLICK TO COPY EMAIL TEXT
+                </button>
+            </div>
+
+            <!-- Step 3: Attach Documents -->
+            <div class="step-card">
+                <div class="text-3xl font-bold mb-3" style="color: var(--primary-color);">Step 3</div>
+                <h3 class="text-xl font-semibold mb-4">Attach Documents</h3>
+                <p class="mb-4 font-bold text-gray-800 text-sm">ESSENTIAL STEP: MPs need these documents for their internal briefing process. Download both PDFs below.</p>
+                <a href="Briefing_Note_2025.pdf" download class="branded-button mb-3">
+                    Download Briefing Note (PDF)
+                </a>
+                <a href="ADSA_LP_Discussion_Paper.pdf" download class="branded-button">
+                    Download Discussion Paper (PDF)
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Copy-Paste Area -->
+        <div class="mt-8">
+            <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Email Template (Copy and Paste)</h3>
+            <div id="email-template" class="copy-text-area">
+                Subject: Support for National Light Pollution Legislation (Motion by Mr Tony Zappia MP)
+
+Dear [Insert MP's Name],
+
+As a concerned constituent, I urge you to proactively support the motion being presented by the Member for Makin, Mr Tony Zappia, in Federal Parliament on November 24th, which calls for an investigation into national legislation to reduce light pollution.
+
+This is a practical, low-cost action that would deliver substantial economic, environmental, and public health benefits to Australia, as outlined in the two documents I have attached below for your review.
+
+Please confirm that you will be supporting this vital initiative to protect our night skies, wildlife, and energy resources.
+
+I have attached the following critical documents for your office:
+1. Briefing Note (2025)
+2. ADSA Light Pollution Discussion Paper
+
+Thank you for your leadership on this important environmental and health matter.
+
+Yours sincerely,
+
+[Your Name]
+[Your Address]
+[Your Contact Information]
+            </div>
+            <p class="mt-4 text-sm text-gray-500 italic">
+                Remember to replace the placeholders in brackets: [Insert MP's Name], [Your Name], [Your Address], and [Your Contact Information].
+            </p>
+        </div>
+
+        <!-- Footer / Share -->
+        <div class="mt-10 pt-6 border-t border-gray-200 text-center">
+            <h4 class="text-lg font-semibold mb-3">Spread the Word!</h4>
+            <p class="mb-4">Quickly share this link with your like-minded dark sky buddies!</p>
+            <a href="mailto:?subject=URGENT%20ACTION%3A%20Support%20Dark%20Sky%20Legislation&body=Please%20take%20two%20minutes%20to%20write%20to%20your%20local%20MP%20to%20support%20national%20light%20pollution%20legislation.%20All%20the%20steps%20and%20the%20email%20template%20are%20here%3A%20https%3A%2F%2Frmidsr.github.io%2Fdarksky-action-page%2F" class="inline-flex items-center branded-button w-auto px-6" style="background-color: #7c768a;">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                Share via Email/Social
+            </a>
+        </div>
+
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const copyBtn = document.getElementById('copy-btn');
+            const emailTemplate = document.getElementById('email-template');
+
+            // Function to copy text to clipboard
+            function copyToClipboard(text) {
+                // Use execCommand('copy') for better compatibility in iframe environments
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = text;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                try {
+                    document.execCommand('copy');
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                }
+                document.body.removeChild(tempTextArea);
+            }
+
+            copyBtn.addEventListener('click', () => {
+                const textToCopy = emailTemplate.textContent.trim();
+                copyToClipboard(textToCopy);
+
+                // Update button state visually
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'COPIED!';
+                copyBtn.classList.add('copied');
+
+                // Revert button text after 2 seconds
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
