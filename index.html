@@ -35,6 +35,17 @@
             padding: 1.25rem;
             border-radius: 8px;
             margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .step-card > * {
+            flex-grow: 0;
+        }
+
+        .step-card .button-wrapper {
+            margin-top: auto; /* Push button to the bottom */
+            padding-top: 1rem;
         }
 
         /* Custom style for the branded buttons */
@@ -130,21 +141,26 @@
             <!-- Step 1: Find MP -->
             <div class="step-card">
                 <div class="text-3xl font-bold mb-3" style="color: var(--primary-color);">Step 1</div>
-                <h3 class="text-xl font-semibold mb-4">Identify Your MP</h3>
-                <p class="mb-6 text-sm text-gray-600">You must send this request to your <strong>local</strong> Federal Member of Parliament.</p>
-                <a href="https://www.aph.gov.au/Senators_and_Members/Members" target="_blank" class="branded-button">
-                    Find My MP Now &rarr;
-                </a>
+                <h3 class="text-xl font-semibold mb-4">Find MP's Contact Details</h3>
+                <p class="mb-4 text-sm text-gray-600 font-bold">Find your MP's contact page. If a direct email address is not listed, use the web contact form!</p>
+                <p class="text-xs text-gray-500 italic">The copied text from Step 2 works perfectly as the body of their online form.</p>
+                <div class="button-wrapper">
+                    <a href="https://www.aph.gov.au/Senators_and_Members/Contact_a_Member" target="_blank" class="branded-button">
+                        Find My MP's Contact Page &rarr;
+                    </a>
+                </div>
             </div>
 
             <!-- Step 2: Copy Email -->
             <div class="step-card">
                 <div class="text-3xl font-bold mb-3" style="color: var(--primary-color);">Step 2</div>
-                <h3 class="text-xl font-semibold mb-4">Copy & Send the Email</h3>
-                <p class="mb-6 text-sm text-gray-600">Paste the copied text into a new email addressed to your MP.</p>
-                <button id="copy-btn" class="branded-button copy-button">
-                    CLICK TO COPY EMAIL TEXT
-                </button>
+                <h3 class="text-xl font-semibold mb-4">Copy, Paste & Send</h3>
+                <p class="mb-6 text-sm text-gray-600">Copy the text below, paste it into a new email OR their web form (from Step 1).</p>
+                <div class="button-wrapper">
+                    <button id="copy-btn" class="branded-button copy-button">
+                        CLICK TO COPY EMAIL TEXT
+                    </button>
+                </div>
             </div>
 
             <!-- Step 3: Attach Documents -->
@@ -152,20 +168,21 @@
                 <div class="text-3xl font-bold mb-3" style="color: var(--primary-color);">Step 3</div>
                 <h3 class="text-xl font-semibold mb-4">Attach Documents</h3>
                 <p class="mb-4 font-bold text-gray-800 text-sm">ESSENTIAL STEP: MPs need these documents for their internal briefing process. Download both PDFs below.</p>
-                <a href="Briefing_Note_2025.pdf" download class="branded-button mb-3">
-                    Download Briefing Note (PDF)
-                </a>
-                <a href="ADSA_LP_Discussion_Paper.pdf" download class="branded-button">
-                    Download Discussion Paper (PDF)
-                </a>
+                <div class="button-wrapper">
+                    <a href="Briefing_Note_2025.pdf" download class="branded-button mb-3">
+                        Download Briefing Note (PDF)
+                    </a>
+                    <a href="ADSA_LP_Discussion_Paper.pdf" download class="branded-button">
+                        Download Discussion Paper (PDF)
+                    </a>
+                </div>
             </div>
 
         </div>
 
         <!-- Copy-Paste Area -->
         <div class="mt-8">
-            <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Email Template (Copy and Paste)</h3>
-            <!-- REMOVED ** ASTERISKS FROM PETITION AND PRESENTED FOR CLEAN COPY-PASTE -->
+            <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Email/Form Template (Copy and Paste)</h3>
             <div id="email-template" class="copy-text-area">
 Subject: Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)
 
