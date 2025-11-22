@@ -131,7 +131,6 @@
             <!-- Wrapper for Icon and Banner -->
             <div class="mb-6">
                 <!-- Small Icon (now 112x112 - w-28 h-28) placed above the banner and centered -->
-                <!-- CRITICAL UPDATE: Using the exact relative file name for GitHub Pages -->
                 <img 
                     src="protect_the_night_header.png" 
                     alt="Protect the Night Logo/Icon" 
@@ -294,7 +293,8 @@ Yours sincerely,
 
                 <!-- Share Email Button -->
                 <p class="mb-3 text-gray-700 font-medium">Email this critical action page to your contacts:</p>
-                <a id="share-link" href="#" class="inline-flex items-center branded-button w-auto px-6" style="background-color: #7c768a;">
+                <!-- Changed href to javascript:void(0) to reinforce that the click should be handled by JS -->
+                <a id="share-link" href="javascript:void(0);" class="inline-flex items-center branded-button w-auto px-6" style="background-color: #7c768a;">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
@@ -325,9 +325,9 @@ Yours sincerely,
             // --- MP Email Content ---
             const MP_EMAIL_SUBJECT = 'Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)';
             
-            // 1. Template for MAILTO (Requires body to include ATTACHMENT references for the user to attach the documents)
-            const MP_EMAIL_BODY_FOR_MAILTO_FULL = `
-Dear [Insert MP's Name],
+            // 1. Template for MAILTO (Requires body to include ATTACHMENT references)
+            // FIXED: Added "Dear [Insert MP's Name]," back to the top of the body for the mailto link.
+            const MP_EMAIL_BODY_FOR_MAILTO_FULL = `Dear [Insert MP's Name],
 
 As a concerned constituent, I urge you to proactively support the successful PETITION being formally PRESENTED by the Member for Makin, Mr Tony Zappia, in Federal Parliament on November 24th, which calls for an investigation into national legislation to reduce light pollution.
 
@@ -347,7 +347,7 @@ Yours sincerely,
 [Your Address]
 [Your Contact Information]
             `;
-            // For mailto, we strip the subject line and trim whitespace.
+            // NOTE: We no longer try to strip the "Dear" line for the mailto link, as it is now included correctly.
             const MP_EMAIL_BODY_FOR_MAILTO = MP_EMAIL_BODY_FOR_MAILTO_FULL.trim();
 
 
@@ -410,9 +410,7 @@ Prepared and shared by the River Murray International Dark Sky Reserve
             // Function to generate the mailto link content
             function generateMailtoLink(subject, body, to = '') {
                 const encodedSubject = encodeURIComponent(subject);
-                // Note: We use the MAILTO body which strips the leading Subject line, as the mailto link handles the subject separately.
-                const bodyWithoutSubject = body.split('Dear [Insert MP\'s Name],')[1];
-                const encodedBody = encodeURIComponent(bodyWithoutSubject.trim());
+                const encodedBody = encodeURIComponent(body.trim());
                 return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
             }
 
@@ -436,7 +434,11 @@ Prepared and shared by the River Murray International Dark Sky Reserve
             });
             
             // 3. Share Button (Mailto link with new network template)
-            shareLink.href = generateMailtoLink(SHARE_SUBJECT, SHARE_BODY);
+            // FIXED: Added event.preventDefault() to stop the default # link behavior.
+            shareLink.addEventListener('click', (event) => {
+                event.preventDefault(); // Stop scroll-to-top behavior
+                window.location.href = generateMailtoLink(SHARE_SUBJECT, SHARE_BODY);
+            });
 
         });
     </script>
