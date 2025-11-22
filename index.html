@@ -157,17 +157,17 @@
             <!-- Key Deadline - BRANDED BANNER -->
             <div class="text-white p-5 rounded-lg mb-6 border-l-4 shadow-sm" style="background-color: var(--primary-color); border-left-color: #a5a0b0;">
                 <p class="font-bold text-xl mb-2">Act Now: Critical Window Closing</p>
-                <p>Your local MP's support is crucial. We need to <strong>maximise</strong> support before the <strong>Petition Presentation</strong> on Monday. Please send your email by <strong>Monday, 24th November, 10:00 AM</strong>.</p>
-                <p class="mt-2 text-sm opacity-90"><strong>Why the deadline?</strong> Emails received before Monday morning will be logged by staff and used to update the final, powerful number of constituent supporters briefed to Mr. Zappia immediately before the Petition is formally presented.</p>
+                <p>Your local MP's support is crucial. We need to **maximise** support before the **Petition Presentation** on Monday. Please send your email by **Monday, 24th November, 10:00 AM**.</p>
+                <p class="mt-2 text-sm opacity-90">**Why the deadline?** Emails received before Monday morning will be logged by staff and used to update the final, powerful number of constituent supporters briefed to Mr. Zappia immediately before the Petition is formally presented.</p>
             </div>
 
             <p class="mb-4 text-gray-700 text-lg leading-relaxed">
-                The Member for Makin, Tony Zappia, is formally <strong>presenting a successful Petition</strong> in Federal Parliament, which calls for an investigation into national legislation to reduce light pollution. Your action is required <strong>immediately</strong> to secure your local MP's support for this vital step.
+                The Member for Makin, Tony Zappia, is formally **presenting a successful Petition** in Federal Parliament, which calls for an investigation into national legislation to reduce light pollution. Your action is required **immediately** to secure your local MP's support for this vital step.
             </p>
 
             <!-- Petition Statement -->
             <div class="p-5 rounded-lg border mb-8 text-center font-medium leading-relaxed text-gray-800" style="background-color: #f9fafb; border-color: var(--primary-color);">
-                This historic moment, driven by the <strong>Australasian Dark Sky Alliance (ADSA)</strong>, is the direct result of a national petition that gathered more than <strong>12,000 signatures</strong> — a clear signal that Australians care deeply about protecting the night environment.
+                This historic moment, driven by the **Australasian Dark Sky Alliance (ADSA)**, is the direct result of a national petition that gathered more than **12,000 signatures** — a clear signal that Australians care deeply about protecting the night environment.
             </div>
 
             <!-- Action Steps Grid (Pure Tailwind for Responsiveness) -->
@@ -180,7 +180,7 @@
                         <h3 class="text-xl font-semibold mb-4 header-font">Find MP's Contact Details</h3>
                         <p class="mb-4 text-sm text-gray-600 font-bold">Use this page to search for your local Federal MP's direct email address.</p>
                         <p class="text-xs text-gray-600 font-bold italic">
-                            If <strong>ONLY</strong> a web contact form is available: <strong>USE THIS FORM INSTEAD</strong>. Sending your support via the form is better than not contacting them at all!
+                            If **ONLY** a web contact form is available: **USE THIS FORM INSTEAD**. Sending your support via the form is better than not contacting them at all!
                         </p>
                     </div>
                     <!-- Button Wrapper uses Tailwind for bottom alignment -->
@@ -196,7 +196,7 @@
                     <div class="mb-4">
                         <div class="text-3xl font-bold mb-3 header-font" style="color: var(--primary-color);">Step 2</div>
                         <h3 class="text-xl font-semibold mb-4 header-font">Pre-fill Email & Send</h3>
-                        <p class="mb-6 text-sm text-gray-600">Click below to **automatically** open a pre-filled email to your MP. Then, add the MP's email address and send!</p>
+                        <p class="mb-6 text-sm text-gray-600">Click below to **automatically** open a **pre-filled** email to your MP. Then, add the MP's email address and send!</p>
                     </div>
                     <!-- Mailto link (Primary Action) -->
                     <div class="mt-auto pt-4 flex flex-col space-y-2">
@@ -324,29 +324,39 @@ Yours sincerely,
             const MP_EMAIL_BODY_FOR_COPY = emailTemplate.textContent.trim();
 
 
-            // --- Share Email Content (New Network Template) ---
+            // --- Share Email Content (New Network Template with formatting) ---
             const SHARE_SUBJECT = 'Thank You! Your Petition [EN7346] Success Needs 5 Minutes More to Back the Dark Sky Preservation Parliament Action!';
             
-            // Share body with bolding and link
+            // Share body with simulated formatting using line breaks and bolding/uppercase
             const SHARE_BODY = `
 Dear Dark Sky Partners
 
-**Thank you!** Because of your support and the support of over 12,000 Australians who signed the Petition EN7346 - National Legislation for Light Pollution Regulation and Dark Sky Preservation, **Parliament Action is in progress!**
+Thank you! Because of your support and the support of over 12,000 Australians who signed the Petition EN7346 - National Legislation for Light Pollution Regulation and Dark Sky Preservation, **PARLIAMENT ACTION IS IN PROGRESS!**
 
-We have a **massive opportunity** this week to protect Australia’s night environment and support sensible national policy.
-On **Monday, November 24th**, the petition ( ${PETITION_LINK} ) will be presented in Federal Parliament calling for an investigation into national legislation to reduce light pollution. This effort is led by the **Australasian Dark Sky Alliance (ADSA).**
-**Your Action is the Critical Next Step (Before Monday Morning)**
+We have a massive opportunity this week to protect Australia’s night environment and support sensible national policy.
 
-The petition got us to the floor of Parliament, but to demonstrate the widespread public support and political will, we need a more powerful, **personalised** action: **email** or use the **web contact form** for your local Federal MP **before 10:00 AM on Monday.**
-It takes less than 5 minutes. We have created a **streamlined action page** that provides everything you need:
-* A tool to find your local Federal MP.
-* A professional, copy-and-paste template that works for both email and web forms.
-* The critical background documents for the MP's office.
-Your communication will be logged by their staff and contributes to the final number of supporters briefed to the MP before the petition is presented. **A flurry of messages from across Australia will ensure your voice is heard loud and clear.** Let's send Mr. Tony Zappia all the support we can, demonstrating he has the undeniable and unwavering backing of other MPs and ALL of Australia.
+On **MONDAY, NOVEMBER 24TH**, the petition will be presented in Federal Parliament calling for an investigation into national legislation to reduce light pollution. This effort is led by the **AUSTRALASIAN DARK SKY ALLIANCE (ADSA)**.
+
+**YOUR ACTION IS THE CRITICAL NEXT STEP (BEFORE MONDAY MORNING)**
+
+The petition got us to the floor of Parliament, but to demonstrate the widespread public support and political will, we need a more powerful, **PERSONALISED** action: **EMAIL** or use the **WEB CONTACT FORM** for your local Federal MP **BEFORE 10:00 AM ON MONDAY.**
+
+It takes less than 5 minutes. We have created a streamlined action page that provides everything you need:
+- A tool to find your local Federal MP.
+- A professional, copy-and-paste template that works for both email and web forms.
+- The critical background documents for the MP's office.
+
+Your communication will be logged by their staff and contributes to the final number of supporters briefed to the MP before the petition is presented. A flurry of messages from across Australia will **ENSURE YOUR VOICE IS HEARD LOUD AND CLEAR**. Let's send Mr. Tony Zappia all the support we can, demonstrating he has the undeniable and unwavering backing of other MPs and **ALL OF AUSTRALIA**.
+
 **TAKE 5 MINUTES TO ACT NOW**
-This easy-peasy 3-step communication is the critical next step required to support the motion.
-**ADVOCACY ACTION PAGE:** ${LIVE_URL}
+
+This easy-peasy 3-step communication is the critical next step required to support the motion:
+ADVOCACY ACTION PAGE: ${LIVE_URL}
+
+Petition Link: ${PETITION_LINK}
+
 This simple action is crucial to securing the next step toward a national standard that benefits wildlife, saves taxpayer energy, and preserves our incredible night skies.
+
 Thank you for being a part of the movement!
 Please share this email with your like-minded Dark Sky Buddies far and wide!
 
@@ -372,7 +382,7 @@ Prepared and shared by the River Murray International Dark Sky Reserve
             // Function to generate the mailto link content
             function generateMailtoLink(subject, body, to = '') {
                 const encodedSubject = encodeURIComponent(subject);
-                // Use a custom function to handle bolding and correct line breaks for mailto
+                // Simple replacement of Markdown bolding **TEXT** to all caps TEXT
                 const formattedBody = body.replace(/\*\*(.*?)\*\*/g, (match, p1) => p1.toUpperCase()).trim();
                 const encodedBody = encodeURIComponent(formattedBody);
                 return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
