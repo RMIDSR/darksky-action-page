@@ -336,18 +336,16 @@ Yours sincerely,
             // --- MP Email Content ---
             const MP_EMAIL_SUBJECT = 'Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)';
             
-            // 1. Template for MAILTO (Restored to full length with attachment references)
+            // 1. Template for MAILTO (Full length, but structurally adjusted to remove "I have attached" and the numbered list, replacing it with a sentence.)
             const MP_EMAIL_BODY_FOR_MAILTO_FULL = `Dear [Insert MP's Name],
 
 As a concerned constituent, I urge you to proactively support the successful PETITION being formally PRESENTED by the Member for Makin, Mr Tony Zappia, in Federal Parliament on November 24th, which calls for an investigation into national legislation to reduce light pollution.
 
-This is a practical, low-cost action that would deliver substantial economic, environmental, and public health benefits to Australia, as outlined in the two documents I have attached below for your review.
+This is a practical, low-cost action that would deliver substantial economic, environmental, and public health benefits to Australia, as outlined in the critical background documents I will forward for your review.
 
 Please confirm that you will be supporting this vital initiative to protect our night skies, wildlife, and energy resources.
 
-I have attached the following critical documents for your office:
-1. Briefing Note (2025)
-2. ADSA Light Pollution Discussion Paper
+These background documents are the Briefing Note (2025) and the ADSA Light Pollution Discussion Paper. Please look out for them.
 
 Thank you for your leadership on this important environmental and health matter.
 
@@ -356,7 +354,8 @@ Yours sincerely,
 [Your Name]
 [Your Address]
 [Your Contact Information]
-            `;
+`;
+            
             // 2. Template for WEB FORM COPY/PASTE (Pulls directly from the HTML div - NO attachment reference)
             const MP_WEBFORM_BODY_FOR_COPY = webFormTemplateDiv.textContent.trim();
 
@@ -415,8 +414,7 @@ Prepared and shared by the River Murray International Dark Sky Reserve
             
             // Function to generate the mailto link content
             function generateMailtoLink(subject, body, to = '') {
-                // *** FIX IMPLEMENTATION: Replace single LF (\n) with CRLF (\r\n) before encoding. ***
-                // This maximizes compatibility for line breaks in email clients.
+                // Ensures all line breaks are encoded as CRLF (\r\n) for highest compatibility across email clients (especially on mobile).
                 const emailBody = body.trim().replace(/\n/g, '\r\n');
                 
                 const encodedSubject = encodeURIComponent(subject);
@@ -446,7 +444,6 @@ Prepared and shared by the River Murray International Dark Sky Reserve
             // 3. Share Button (Mailto link with new network template)
             shareLink.addEventListener('click', (event) => {
                 event.preventDefault(); // Stop scroll-to-top behavior
-                // Note: The share body also benefits from the robust CRLF encoding fix.
                 window.location.href = generateMailtoLink(SHARE_SUBJECT, SHARE_BODY);
             });
 
