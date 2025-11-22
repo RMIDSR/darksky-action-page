@@ -42,7 +42,7 @@
             border-radius: 12px;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 15px -5px rgba(0, 0, 0, 0.04);
             padding-bottom: 2rem;
-            padding-top: 2rem; /* Added padding top since header image is gone */
+            padding-top: 2rem; 
         }
 
         /* Step Card Styling */
@@ -200,6 +200,11 @@
                         <h3 class="text-xl font-semibold mb-4 header-font">Choose Delivery Method</h3>
                         <!-- Updated content with <strong> tags and crucial instruction -->
                         <p class="mb-6 text-sm text-gray-600">Click the top button for email, or the bottom button to copy text for a web form. Remember to add <strong>your personal details</strong> (name, address, contact) before sending!</p>
+                        
+                        <!-- Added the mobile mailto warning back as a helpful hint -->
+                        <p id="mailto-warning" class="text-xs text-yellow-600 font-bold bg-yellow-100 p-2 rounded hidden">
+                            <i class="fas fa-mobile-alt mr-1"></i> If this link fails on mobile, please open the page in your device's external browser (e.g., Chrome or Safari).
+                        </p>
                     </div>
                     <!-- Mailto link (Primary Action) -->
                     <div class="mt-auto pt-4 flex flex-col space-y-2">
@@ -317,6 +322,12 @@ Yours sincerely,
             const webFormTemplateDiv = document.getElementById('web-form-template');
             const sendEmailBtn = document.getElementById('send-email-btn');
             const shareLink = document.getElementById('share-link');
+            const mailtoWarning = document.getElementById('mailto-warning');
+
+            // Show the mobile mailto warning if the user agent suggests mobile device
+            if (/Mobi|Android|iPhone|iPad|Windows Phone/i.test(navigator.userAgent)) {
+                mailtoWarning.classList.remove('hidden');
+            }
             
             // --- CONSTANTS ---
             const LIVE_URL = 'https://rmidsr.github.io/darksky-action-page/'; 
@@ -325,8 +336,7 @@ Yours sincerely,
             // --- MP Email Content ---
             const MP_EMAIL_SUBJECT = 'Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)';
             
-            // 1. Template for MAILTO (Requires body to include ATTACHMENT references)
-            // FIXED: Added "Dear [Insert MP's Name]," back to the top of the body for the mailto link.
+            // 1. Template for MAILTO (Restored to full length with attachment references)
             const MP_EMAIL_BODY_FOR_MAILTO_FULL = `Dear [Insert MP's Name],
 
 As a concerned constituent, I urge you to proactively support the successful PETITION being formally PRESENTED by the Member for Makin, Mr Tony Zappia, in Federal Parliament on November 24th, which calls for an investigation into national legislation to reduce light pollution.
@@ -347,10 +357,6 @@ Yours sincerely,
 [Your Address]
 [Your Contact Information]
             `;
-            // NOTE: We no longer try to strip the "Dear" line for the mailto link, as it is now included correctly.
-            const MP_EMAIL_BODY_FOR_MAILTO = MP_EMAIL_BODY_FOR_MAILTO_FULL.trim();
-
-
             // 2. Template for WEB FORM COPY/PASTE (Pulls directly from the HTML div - NO attachment reference)
             const MP_WEBFORM_BODY_FOR_COPY = webFormTemplateDiv.textContent.trim();
 
@@ -409,8 +415,12 @@ Prepared and shared by the River Murray International Dark Sky Reserve
             
             // Function to generate the mailto link content
             function generateMailtoLink(subject, body, to = '') {
+                // *** FIX IMPLEMENTATION: Replace single LF (\n) with CRLF (\r\n) before encoding. ***
+                // This maximizes compatibility for line breaks in email clients.
+                const emailBody = body.trim().replace(/\n/g, '\r\n');
+                
                 const encodedSubject = encodeURIComponent(subject);
-                const encodedBody = encodeURIComponent(body.trim());
+                const encodedBody = encodeURIComponent(emailBody);
                 return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
             }
 
@@ -434,9 +444,9 @@ Prepared and shared by the River Murray International Dark Sky Reserve
             });
             
             // 3. Share Button (Mailto link with new network template)
-            // FIXED: Added event.preventDefault() to stop the default # link behavior.
             shareLink.addEventListener('click', (event) => {
                 event.preventDefault(); // Stop scroll-to-top behavior
+                // Note: The share body also benefits from the robust CRLF encoding fix.
                 window.location.href = generateMailtoLink(SHARE_SUBJECT, SHARE_BODY);
             });
 
