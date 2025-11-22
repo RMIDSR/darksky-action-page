@@ -76,6 +76,7 @@
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
             background-color: white;
+            margin-top: 0.5rem; /* Space between the mailto link and the copy button */
         }
         
         .copy-button:hover {
@@ -120,7 +121,7 @@
             <h1 class="text-4xl sm:text-5xl font-extrabold tracking-widest uppercase mb-1">
                 ADVOCACY ACTION PAGE
             </h1>
-            <!-- SUBTITLE: Font size reduced to prevent awkward wrapping -->
+            <!-- SUBTITLE: Font size optimized for clean wrapping -->
             <p class="text-lg sm:text-xl font-semibold mt-1 text-white/90">
                 National Legislation for Light Pollution Regulation and Dark Sky Preservation
             </p>
@@ -171,17 +172,21 @@
                     </div>
                 </div>
 
-                <!-- Step 2: Copy Email -->
+                <!-- Step 2: Send Email (Updated to Mailto primary action) -->
                 <div class="step-card p-4">
                     <div class="mb-4">
                         <div class="text-3xl font-bold mb-3 header-font" style="color: var(--primary-color);">Step 2</div>
-                        <h3 class="text-xl font-semibold mb-4 header-font">Copy, Paste & Send</h3>
-                        <p class="mb-6 text-sm text-gray-600">Copy the text below, paste it into a new email OR their web form (from Step 1).</p>
+                        <h3 class="text-xl font-semibold mb-4 header-font">Pre-fill Email & Send</h3>
+                        <p class="mb-6 text-sm text-gray-600">Click below to **automatically** open a pre-filled email to your MP. Then, add the MP's email address and send!</p>
                     </div>
-                    <!-- Button Wrapper uses Tailwind for bottom alignment -->
-                    <div class="mt-auto pt-4">
+                    <!-- Mailto link (Primary Action) -->
+                    <div class="mt-auto pt-4 flex flex-col space-y-2">
+                        <a id="send-email-btn" href="#" class="branded-button">
+                            OPEN PRE-FILLED EMAIL &rarr;
+                        </a>
+                        <!-- Copy button (Fallback) -->
                         <button id="copy-btn" class="branded-button copy-button">
-                            CLICK TO COPY EMAIL TEXT
+                            Copy Text Only (For Web Forms)
                         </button>
                     </div>
                 </div>
@@ -206,9 +211,9 @@
 
             </div>
 
-            <!-- Copy-Paste Area -->
+            <!-- Copy-Paste Area (Now just a reference) -->
             <div class="mt-8">
-                <h3 class="text-2xl font-semibold mb-4 header-font" style="color: var(--primary-color);">Email/Form Template (Copy and Paste)</h3>
+                <h3 class="text-2xl font-semibold mb-4 header-font" style="color: var(--primary-color);">Email Template (Reference Only)</h3>
                 <div id="email-template" class="copy-text-area">
 Subject: Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)
 
@@ -240,18 +245,18 @@ Yours sincerely,
                 </p>
             </div>
 
-            <!-- Footer / Share -->
+            <!-- Footer / Share (URL Corrected) -->
             <div class="mt-10 pt-6 border-t border-gray-200 text-center px-4">
                 <h4 class="text-lg font-semibold mb-3 header-font">Spread the Word!</h4>
                 <p class="mb-4">Quickly share this link with your like-minded dark sky buddies!</p>
-                <a href="mailto:?subject=URGENT%20ACTION%3A%20Support%20Dark%20Sky%20Legislation&body=Please%20take%20five%20minutes%20to%20write%20to%20your%20local%20MP%20to%20support%20national%20light%20pollution%20legislation.%20All%20the%20steps%20and%20the%20email%20template%20are%20here%3A%20https%3A%2F%2Fexample.com%2Fdarksky-action-page%2F" class="inline-flex items-center branded-button w-auto px-6" style="background-color: #7c768a;">
+                <a id="share-link" href="#" class="inline-flex items-center branded-button w-auto px-6" style="background-color: #7c768a;">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
                     Share via Email/Social
                 </a>
                 
-                <!-- Updated Footer Credit: Removed the requested line. -->
+                <!-- Footer Credit -->
                 <div class="mt-8 pt-4 text-xs text-gray-400 border-t border-gray-100">
                     <p>This Digital Advocacy Action Page was created by the River Murray International Dark Sky Reserve (RMIDSR) to support the ADSA and the broader Dark Sky Movement.</p>
                 </div>
@@ -265,10 +270,25 @@ Yours sincerely,
         document.addEventListener('DOMContentLoaded', () => {
             const copyBtn = document.getElementById('copy-btn');
             const emailTemplate = document.getElementById('email-template');
+            const sendEmailBtn = document.getElementById('send-email-btn');
+            const shareLink = document.getElementById('share-link');
+            
+            // --- CONSTANTS ---
+            // CORRECTED: Set the live URL for the share link
+            const LIVE_URL = 'https://rmidsr.github.io/darksky-action-page/';
 
+            // Text used in the MP email (Body and Subject)
+            const EMAIL_SUBJECT = 'Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)';
+            const EMAIL_BODY_RAW = emailTemplate.textContent.trim(); // Use the raw, trimmed text from the hidden template
+
+            // Text used for sharing this page (Body and Subject)
+            const SHARE_SUBJECT = 'URGENT ACTION: Support Dark Sky Legislation';
+            const SHARE_BODY = 'Please take five minutes to write to your local MP to support national light pollution legislation. All the steps and the email template are here: ' + LIVE_URL;
+
+            // --- FUNCTIONS ---
+            
             // Function to copy text to clipboard
             function copyToClipboard(text) {
-                // Use execCommand('copy') for better compatibility in iframe environments
                 const tempTextArea = document.createElement('textarea');
                 tempTextArea.value = text;
                 document.body.appendChild(tempTextArea);
@@ -280,23 +300,37 @@ Yours sincerely,
                 }
                 document.body.removeChild(tempTextArea);
             }
+            
+            // Function to generate the mailto link content
+            function generateMailtoLink(subject, body, to = '') {
+                const encodedSubject = encodeURIComponent(subject);
+                const encodedBody = encodeURIComponent(body);
+                // For MP email, we leave 'to' blank so the user can fill it in.
+                return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
+            }
 
+            // --- EVENT LISTENERS ---
+
+            // 1. MP Email Button (Mailto link)
+            sendEmailBtn.href = generateMailtoLink(EMAIL_SUBJECT, EMAIL_BODY_RAW);
+
+            // 2. Copy Button (Fallback for web forms)
             copyBtn.addEventListener('click', () => {
-                // We use .trim() on textContent to get the clean text without extra surrounding spaces/newlines
-                const textToCopy = emailTemplate.textContent.trim();
-                copyToClipboard(textToCopy);
+                copyToClipboard(EMAIL_BODY_RAW);
 
-                // Update button state visually
                 const originalText = copyBtn.textContent;
                 copyBtn.textContent = 'COPIED!';
                 copyBtn.classList.add('copied');
 
-                // Revert button text after 2 seconds
                 setTimeout(() => {
                     copyBtn.textContent = originalText;
                     copyBtn.classList.remove('copied');
                 }, 2000);
             });
+            
+            // 3. Share Button (Mailto link with correct live URL)
+            shareLink.href = generateMailtoLink(SHARE_SUBJECT, SHARE_BODY);
+
         });
     </script>
 </body>
