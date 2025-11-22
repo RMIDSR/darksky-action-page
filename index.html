@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support Dark Sky Legislation - Action Page</title>
     <!-- Load Google Fonts: League Spartan (Bold) and Montserrat (Body) -->
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght=700;800&family=Montserrat:wght=400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Font Awesome for Icons -->
@@ -42,6 +42,7 @@
             border-radius: 12px;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 15px -5px rgba(0, 0, 0, 0.04);
             padding-bottom: 2rem;
+            padding-top: 2rem; /* Added padding top since header image is gone */
         }
 
         /* Step Card Styling */
@@ -124,28 +125,22 @@
 
     <div class="action-container">
 
-        <!-- IMAGE HEADER BANNER: Replaces the purple text banner -->
-        <div class="header-image-container w-full" style="
-            border-top-left-radius: 12px; 
-            border-top-right-radius: 12px;
-            margin-top: -2rem; /* Aligns with the top of the action container */
-        ">
-            <!-- Ensure the image path matches the file you upload to GitHub -->
-            <img 
-                src="protect_the_night_header.png" 
-                alt="Protect the Night Advocacy Action Page Banner" 
-                class="w-full h-auto object-cover" 
-                style="border-top-left-radius: 12px; border-top-right-radius: 12px; display: block;"
-            />
-        </div>
-
         <!-- Main Content Starts Here -->
-        <div class="pt-8 px-4"> 
+        <div class="px-4"> 
             
-            <!-- Secondary Header (Purple Text on White) -->
-            <h2 class="text-xl text-center font-semibold mb-8 text-gray-600 header-font" style="color: var(--primary-color);">
+            <!-- NEW REQUESTED BANNER BLOCK (MOVED TO TOP) -->
+            <div class="bg-purple-900 text-white p-4 rounded-lg mb-6 shadow-md" style="background-color: var(--primary-color);">
+                <!-- Increased size to text-4xl -->
+                <p class="text-center text-4xl font-extrabold tracking-tight header-font uppercase">ADVOCACY ACTION PAGE</p>
+                <p class="text-center text-sm font-medium opacity-90">Petition EN7346 - National Legislation for Light Pollution Regulation and Dark Sky Preservation</p>
+            </div>
+            
+            <!-- Main Header -->
+            <!-- Reduced size to text-2xl to fit on one line -->
+            <h1 class="text-2xl text-center font-bold mb-4 header-font" style="color: var(--primary-color);">
                 SUPPORT TONY ZAPPIA and ADSA to LEAD THE DARK SKY MOVEMENT
-            </h2>
+            </h1>
+
             
             <!-- Key Deadline - BRANDED BANNER -->
             <div class="text-white p-5 rounded-lg mb-6 border-l-4 shadow-sm" style="background-color: var(--primary-color); border-left-color: #a5a0b0;">
@@ -176,7 +171,7 @@
                         <p class="mb-4 text-sm text-gray-600 font-bold">Use this page to search for your local Federal MP's direct email address.</p>
                         <!-- UPDATED INSTRUCTION FOR CLARITY -->
                         <p class="text-xs text-red-700 font-bold italic">
-                            <i class="fas fa-exclamation-triangle mr-1"></i> If <strong>ONLY</strong> a web contact form is available, proceed to **Step 2** and use the "Copy Text Only" button to paste the message directly into the MP's form.
+                            <i class="fas fa-exclamation-triangle mr-1"></i> If <strong>ONLY</strong> a web contact form is available, proceed to **Step 2** and use the "Copy Text Only" button to copy the **Web Form Template** below.
                         </p>
                     </div>
                     <!-- Button Wrapper uses Tailwind for bottom alignment -->
@@ -191,14 +186,14 @@
                 <div class="step-card p-4">
                     <div class="mb-4">
                         <div class="text-3xl font-bold mb-3 header-font" style="color: var(--primary-color);">Step 2</div>
-                        <h3 class="text-xl font-semibold mb-4 header-font">Pre-fill Email & Send</h3>
+                        <h3 class="text-xl font-semibold mb-4 header-font">Choose Delivery Method</h3>
                         <!-- Updated content with <strong> tags and crucial instruction -->
-                        <p class="mb-6 text-sm text-gray-600">Click below to <strong>automatically</strong> open a <strong>pre-filled</strong> email to your MP. Then, add the MP's email address, and most importantly, <strong>your personal sender details</strong> (name, address, contact) before sending!</p>
+                        <p class="mb-6 text-sm text-gray-600">Click the top button for email, or the bottom button to copy text for a web form. Remember to add <strong>your personal details</strong> (name, address, contact) before sending!</p>
                     </div>
                     <!-- Mailto link (Primary Action) -->
                     <div class="mt-auto pt-4 flex flex-col space-y-2">
                         <a id="send-email-btn" href="#" class="branded-button">
-                            OPEN PRE-FILLED EMAIL &rarr;
+                            OPEN PRE-FILLED EMAIL (With Attachments) &rarr;
                         </a>
                         <!-- Copy button (Fallback) -->
                         <button id="copy-btn" class="branded-button copy-button">
@@ -212,7 +207,10 @@
                     <div class="mb-4">
                         <div class="text-3xl font-bold mb-3 header-font" style="color: var(--primary-color);">Step 3</div>
                         <h3 class="text-xl font-semibold mb-4 header-font">Attach Documents</h3>
-                        <p class="mb-4 font-bold text-gray-800 text-sm">ESSENTIAL STEP: MPs need these documents for their internal briefing process. Download both PDFs below.</p>
+                        <p class="mb-4 font-bold text-gray-800 text-sm">ESSENTIAL STEP FOR EMAIL: MPs need these documents for their internal briefing process. Download both PDFs below to attach to your email.</p>
+                        <p class="text-xs text-red-700 font-bold italic">
+                            Attachments are NOT possible via a web form.
+                        </p>
                     </div>
                     <!-- Button Wrapper uses Tailwind for bottom alignment and spacing -->
                     <div class="mt-auto pt-4 space-y-3">
@@ -227,30 +225,26 @@
 
             </div>
 
-            <!-- Copy-Paste Area (Reference) -->
+            <!-- Web Form Copy-Paste Area (Attachment-Free) -->
             <div class="mt-8">
                 <!-- CLARIFIED HEADING -->
                 <h3 class="text-2xl font-semibold mb-4 header-font" style="color: var(--primary-color);">
-                    Email Template (Copy/Paste for Web Forms)
+                    Web Form Template (Copy/Paste Only)
                 </h3>
                 <!-- CLARIFIED INSTRUCTION -->
                 <p class="mb-4 text-sm text-gray-700 font-bold">
-                    If your MP only provides a web contact form (Step 1), use the "Copy Text Only" button in Step 2 to copy this full template and paste it into the message field.
+                    Use the "Copy Text Only (For Web Forms)" button in Step 2 to copy this template into your MP's web form message field. This version **does not reference attachments.**
                 </p>
-                <div id="email-template" class="copy-text-area">
+                <div id="web-form-template" class="copy-text-area">
 Subject: Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)
 
 Dear [Insert MP's Name],
 
 As a concerned constituent, I urge you to proactively support the successful PETITION being formally PRESENTED by the Member for Makin, Mr Tony Zappia, in Federal Parliament on November 24th, which calls for an investigation into national legislation to reduce light pollution.
 
-This is a practical, low-cost action that would deliver substantial economic, environmental, and public health benefits to Australia, as outlined in the two documents I have attached below for your review.
+This is a practical, low-cost action that would deliver substantial economic, environmental, and public health benefits to Australia.
 
 Please confirm that you will be supporting this vital initiative to protect our night skies, wildlife, and energy resources.
-
-I have attached the following critical documents for your office:
-1. Briefing Note (2025)
-2. ADSA Light Pollution Discussion Paper
 
 Thank you for your leadership on this important environmental and health matter.
 
@@ -263,12 +257,9 @@ Yours sincerely,
                 <p class="mt-4 text-sm text-gray-500 italic">
                     Remember to replace the placeholders in brackets: [Insert MP's Name], [Your Name], [Your Address], and [Your Contact Information].
                 </p>
-                <p class="mt-2 text-sm text-red-600 font-bold italic">
-                    *CRITICAL*: If you used a web form, the office will receive your message, but not the attachments. You have still shown your support, which is the most important step for the Monday deadline!
-                </p>
             </div>
 
-            <!-- Footer / Share (URL Corrected and enhanced) -->
+            <!-- Footer / Share -->
             <div class="mt-10 pt-6 border-t border-gray-200 text-center px-4">
                 <h4 class="text-lg font-semibold mb-3 header-font">Spread the Word!</h4>
                 
@@ -288,7 +279,7 @@ Yours sincerely,
                     </a>
                 </div>
 
-                <!-- Share Email Button (Now for a powerful message) -->
+                <!-- Share Email Button -->
                 <p class="mb-3 text-gray-700 font-medium">Email this critical action page to your contacts:</p>
                 <a id="share-link" href="#" class="inline-flex items-center branded-button w-auto px-6" style="background-color: #7c768a;">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -310,30 +301,50 @@ Yours sincerely,
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const copyBtn = document.getElementById('copy-btn');
-            const emailTemplate = document.getElementById('email-template');
+            const webFormTemplateDiv = document.getElementById('web-form-template');
             const sendEmailBtn = document.getElementById('send-email-btn');
             const shareLink = document.getElementById('share-link');
             
             // --- CONSTANTS ---
-            // NOTE: Using a placeholder URL for testing. In a live environment, this should be the actual hosted URL.
             const LIVE_URL = 'https://rmidsr.github.io/darksky-action-page/'; 
             const PETITION_LINK = 'https://www.aph.gov.au/e-petitions/petition/EN7346';
 
             // --- MP Email Content ---
             const MP_EMAIL_SUBJECT = 'Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)';
             
-            // MP email body for mailto: (Removes the Subject line and two blank lines for the clean body)
-            // Starts slicing from Dear [Insert MP's Name], which is line 4 (index 3) of the raw template text.
-            const MP_EMAIL_BODY_FOR_MAILTO = emailTemplate.textContent.trim().split('\n').slice(3).join('\n').trim();
+            // 1. Template for MAILTO (Requires body to include ATTACHMENT references for the user to attach the documents)
+            const MP_EMAIL_BODY_FOR_MAILTO_FULL = `
+Dear [Insert MP's Name],
 
-            // MP email body for Copy/Paste button (This includes the Subject line which is necessary for web form users to copy)
-            const MP_EMAIL_BODY_FOR_COPY = emailTemplate.textContent.trim();
+As a concerned constituent, I urge you to proactively support the successful PETITION being formally PRESENTED by the Member for Makin, Mr Tony Zappia, in Federal Parliament on November 24th, which calls for an investigation into national legislation to reduce light pollution.
+
+This is a practical, low-cost action that would deliver substantial economic, environmental, and public health benefits to Australia, as outlined in the two documents I have attached below for your review.
+
+Please confirm that you will be supporting this vital initiative to protect our night skies, wildlife, and energy resources.
+
+I have attached the following critical documents for your office:
+1. Briefing Note (2025)
+2. ADSA Light Pollution Discussion Paper
+
+Thank you for your leadership on this important environmental and health matter.
+
+Yours sincerely,
+
+[Your Name]
+[Your Address]
+[Your Contact Information]
+            `;
+            // For mailto, we strip the subject line and trim whitespace.
+            const MP_EMAIL_BODY_FOR_MAILTO = MP_EMAIL_BODY_FOR_MAILTO_FULL.trim();
 
 
-            // --- Share Email Content (New Network Template with formatting) ---
+            // 2. Template for WEB FORM COPY/PASTE (Pulls directly from the HTML div - NO attachment reference)
+            const MP_WEBFORM_BODY_FOR_COPY = webFormTemplateDiv.textContent.trim();
+
+
+            // --- Share Email Content ---
             const SHARE_SUBJECT = 'Thank You! Your Petition [EN7346] Success Needs 5 Minutes More to Back the Dark Sky Preservation Parliament Action!';
             
-            // Share body uses strategic CAPITALIZATION and line breaks to simulate bolding/formatting in plain text
             const SHARE_BODY = `
 Dear Dark Sky Partners
 
@@ -386,18 +397,20 @@ Prepared and shared by the River Murray International Dark Sky Reserve
             // Function to generate the mailto link content
             function generateMailtoLink(subject, body, to = '') {
                 const encodedSubject = encodeURIComponent(subject);
-                const encodedBody = encodeURIComponent(body.trim());
+                // Note: We use the MAILTO body which strips the leading Subject line, as the mailto link handles the subject separately.
+                const bodyWithoutSubject = body.split('Dear [Insert MP\'s Name],')[1];
+                const encodedBody = encodeURIComponent(bodyWithoutSubject.trim());
                 return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
             }
 
             // --- EVENT LISTENERS ---
 
-            // 1. MP Email Button (Mailto link) - Uses clean body
-            sendEmailBtn.href = generateMailtoLink(MP_EMAIL_SUBJECT, MP_EMAIL_BODY_FOR_MAILTO);
+            // 1. MP Email Button (Mailto link) - Uses template with attachment instructions
+            sendEmailBtn.href = generateMailtoLink(MP_EMAIL_SUBJECT, MP_EMAIL_BODY_FOR_MAILTO_FULL);
 
-            // 2. Copy Button (Fallback for web forms) - Copies the entire template text
+            // 2. Copy Button (Fallback for web forms) - Copies the attachment-free web form template
             copyBtn.addEventListener('click', () => {
-                copyToClipboard(MP_EMAIL_BODY_FOR_COPY);
+                copyToClipboard(MP_WEBFORM_BODY_FOR_COPY);
 
                 const originalText = copyBtn.textContent;
                 copyBtn.textContent = 'COPIED!';
