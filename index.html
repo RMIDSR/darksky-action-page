@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* Custom styles for branding */
         :root {
@@ -109,7 +111,24 @@
             /* Negative margin to pull it up to the container edge */
             margin-top: -2rem; 
         }
-
+        
+        /* Social Button Styling */
+        .social-button {
+            background-color: var(--primary-color);
+            color: white;
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 9999px; /* Full circle */
+            transition: opacity 0.2s, transform 0.1s;
+        }
+        
+        .social-button:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -172,7 +191,7 @@
                     </div>
                 </div>
 
-                <!-- Step 2: Send Email (Updated to Mailto primary action) -->
+                <!-- Step 2: Send Email (Mailto primary action) -->
                 <div class="step-card p-4">
                     <div class="mb-4">
                         <div class="text-3xl font-bold mb-3 header-font" style="color: var(--primary-color);">Step 2</div>
@@ -211,7 +230,7 @@
 
             </div>
 
-            <!-- Copy-Paste Area (Now just a reference) -->
+            <!-- Copy-Paste Area (Reference) -->
             <div class="mt-8">
                 <h3 class="text-2xl font-semibold mb-4 header-font" style="color: var(--primary-color);">Email Template (Reference Only)</h3>
                 <div id="email-template" class="copy-text-area">
@@ -245,15 +264,33 @@ Yours sincerely,
                 </p>
             </div>
 
-            <!-- Footer / Share (URL Corrected) -->
+            <!-- Footer / Share (URL Corrected and enhanced) -->
             <div class="mt-10 pt-6 border-t border-gray-200 text-center px-4">
                 <h4 class="text-lg font-semibold mb-3 header-font">Spread the Word!</h4>
-                <p class="mb-4">Quickly share this link with your like-minded dark sky buddies!</p>
+                
+                <!-- Social Media Buttons -->
+                <div class="flex justify-center space-x-4 mb-6">
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/p/DRRcFzqjd2Y/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="social-button">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </a>
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/share/p/16dPBzBdH1/" target="_blank" class="social-button">
+                        <i class="fab fa-facebook-f fa-lg"></i>
+                    </a>
+                    <!-- X (Twitter) -->
+                    <a href="https://x.com/RMIDSR_Official/status/1992048209661989304?s=20" target="_blank" class="social-button">
+                        <i class="fab fa-x-twitter fa-lg"></i>
+                    </a>
+                </div>
+
+                <!-- Share Email Button (Now for a powerful message) -->
+                <p class="mb-3 text-gray-700 font-medium">Email this critical action page to your contacts:</p>
                 <a id="share-link" href="#" class="inline-flex items-center branded-button w-auto px-6" style="background-color: #7c768a;">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
-                    Share via Email/Social
+                    Share via Email
                 </a>
                 
                 <!-- Footer Credit -->
@@ -274,16 +311,30 @@ Yours sincerely,
             const shareLink = document.getElementById('share-link');
             
             // --- CONSTANTS ---
-            // CORRECTED: Set the live URL for the share link
             const LIVE_URL = 'https://rmidsr.github.io/darksky-action-page/';
 
             // Text used in the MP email (Body and Subject)
-            const EMAIL_SUBJECT = 'Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)';
-            const EMAIL_BODY_RAW = emailTemplate.textContent.trim(); // Use the raw, trimmed text from the hidden template
+            const MP_EMAIL_SUBJECT = 'Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)';
+            const MP_EMAIL_BODY_RAW = emailTemplate.textContent.trim(); // Use the raw, trimmed text from the hidden template
 
-            // Text used for sharing this page (Body and Subject)
-            const SHARE_SUBJECT = 'URGENT ACTION: Support Dark Sky Legislation';
-            const SHARE_BODY = 'Please take five minutes to write to your local MP to support national light pollution legislation. All the steps and the email template are here: ' + LIVE_URL;
+            // Text used for sharing this page (Body and Subject) - ENHANCED MESSAGE
+            const SHARE_SUBJECT = '🚨 URGENT: Take 5 Minutes to Protect Our Night Skies by Monday 10:00 AM!';
+            const SHARE_BODY = `
+It's a historic moment for the Dark Sky Movement in Australia!
+
+The Federal Petition on Light Pollution, driven by ADSA and supported by RMIDSR, is being formally presented in Parliament by Mr. Tony Zappia MP on Monday.
+
+We need to build an immediate 'army' of advocates: constituents emailing their local MP to back this legislation. Emails before Monday morning will be logged to show maximum constituent support!
+
+TAKE ACTION NOW:
+1. Find your MP's email.
+2. Send the pre-filled support email (takes 2 minutes).
+3. Download and attach the two crucial briefing PDFs.
+
+All steps and materials are available here: ${LIVE_URL}
+
+Please act right now and share this link widely! Our night skies, wildlife, and energy resources depend on it.
+`;
 
             // --- FUNCTIONS ---
             
@@ -312,11 +363,11 @@ Yours sincerely,
             // --- EVENT LISTENERS ---
 
             // 1. MP Email Button (Mailto link)
-            sendEmailBtn.href = generateMailtoLink(EMAIL_SUBJECT, EMAIL_BODY_RAW);
+            sendEmailBtn.href = generateMailtoLink(MP_EMAIL_SUBJECT, MP_EMAIL_BODY_RAW);
 
             // 2. Copy Button (Fallback for web forms)
             copyBtn.addEventListener('click', () => {
-                copyToClipboard(EMAIL_BODY_RAW);
+                copyToClipboard(MP_EMAIL_BODY_RAW);
 
                 const originalText = copyBtn.textContent;
                 copyBtn.textContent = 'COPIED!';
@@ -328,7 +379,7 @@ Yours sincerely,
                 }, 2000);
             });
             
-            // 3. Share Button (Mailto link with correct live URL)
+            // 3. Share Button (Mailto link with correct live URL and enhanced message)
             shareLink.href = generateMailtoLink(SHARE_SUBJECT, SHARE_BODY);
 
         });
