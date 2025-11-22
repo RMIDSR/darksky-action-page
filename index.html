@@ -157,17 +157,19 @@
             <!-- Key Deadline - BRANDED BANNER -->
             <div class="text-white p-5 rounded-lg mb-6 border-l-4 shadow-sm" style="background-color: var(--primary-color); border-left-color: #a5a0b0;">
                 <p class="font-bold text-xl mb-2">Act Now: Critical Window Closing</p>
-                <p>Your local MP's support is crucial. We need to **maximise** support before the **Petition Presentation** on Monday. Please send your email by **Monday, 24th November, 10:00 AM**.</p>
-                <p class="mt-2 text-sm opacity-90">**Why the deadline?** Emails received before Monday morning will be logged by staff and used to update the final, powerful number of constituent supporters briefed to Mr. Zappia immediately before the Petition is formally presented.</p>
+                <!-- Bolding added with <strong> -->
+                <p>Your local MP's support is crucial. We need to <strong>maximise</strong> support before the <strong>Petition Presentation</strong> on Monday. Please send your email by <strong>Monday, 24th November, 10:00 AM</strong>.</p>
+                <!-- Bolding added with <strong> -->
+                <p class="mt-2 text-sm opacity-90"><strong>Why the deadline?</strong> Emails received before Monday morning will be logged by staff and used to update the final, powerful number of constituent supporters briefed to Mr. Zappia immediately before the Petition is formally presented.</p>
             </div>
 
             <p class="mb-4 text-gray-700 text-lg leading-relaxed">
-                The Member for Makin, Tony Zappia, is formally **presenting a successful Petition** in Federal Parliament, which calls for an investigation into national legislation to reduce light pollution. Your action is required **immediately** to secure your local MP's support for this vital step.
+                The Member for Makin, Tony Zappia, is formally <strong>presenting a successful Petition</strong> in Federal Parliament, which calls for an investigation into national legislation to reduce light pollution. Your action is required <strong>immediately</strong> to secure your local MP's support for this vital step.
             </p>
 
             <!-- Petition Statement -->
             <div class="p-5 rounded-lg border mb-8 text-center font-medium leading-relaxed text-gray-800" style="background-color: #f9fafb; border-color: var(--primary-color);">
-                This historic moment, driven by the **Australasian Dark Sky Alliance (ADSA)**, is the direct result of a national petition that gathered more than **12,000 signatures** — a clear signal that Australians care deeply about protecting the night environment.
+                This historic moment, driven by the <strong>Australasian Dark Sky Alliance (ADSA)</strong>, is the direct result of a national petition that gathered more than <strong>12,000 signatures</strong> — a clear signal that Australians care deeply about protecting the night environment.
             </div>
 
             <!-- Action Steps Grid (Pure Tailwind for Responsiveness) -->
@@ -180,7 +182,7 @@
                         <h3 class="text-xl font-semibold mb-4 header-font">Find MP's Contact Details</h3>
                         <p class="mb-4 text-sm text-gray-600 font-bold">Use this page to search for your local Federal MP's direct email address.</p>
                         <p class="text-xs text-gray-600 font-bold italic">
-                            If **ONLY** a web contact form is available: **USE THIS FORM INSTEAD**. Sending your support via the form is better than not contacting them at all!
+                            If <strong>ONLY</strong> a web contact form is available: <strong>USE THIS FORM INSTEAD</strong>. Sending your support via the form is better than not contacting them at all!
                         </p>
                     </div>
                     <!-- Button Wrapper uses Tailwind for bottom alignment -->
@@ -196,7 +198,8 @@
                     <div class="mb-4">
                         <div class="text-3xl font-bold mb-3 header-font" style="color: var(--primary-color);">Step 2</div>
                         <h3 class="text-xl font-semibold mb-4 header-font">Pre-fill Email & Send</h3>
-                        <p class="mb-6 text-sm text-gray-600">Click below to **automatically** open a **pre-filled** email to your MP. Then, add the MP's email address and send!</p>
+                        <!-- Updated content with <strong> tags and crucial instruction -->
+                        <p class="mb-6 text-sm text-gray-600">Click below to <strong>automatically</strong> open a <strong>pre-filled</strong> email to your MP. Then, add the MP's email address, and most importantly, <strong>your personal sender details</strong> (name, address, contact) before sending!</p>
                     </div>
                     <!-- Mailto link (Primary Action) -->
                     <div class="mt-auto pt-4 flex flex-col space-y-2">
@@ -311,13 +314,15 @@ Yours sincerely,
             const shareLink = document.getElementById('share-link');
             
             // --- CONSTANTS ---
-            const LIVE_URL = 'https://rmidsr.github.io/darksky-action-page/';
+            // NOTE: Using a placeholder URL for testing. In a live environment, this should be the actual hosted URL.
+            const LIVE_URL = 'https://rmidsr.github.io/darksky-action-page/'; 
             const PETITION_LINK = 'https://www.aph.gov.au/e-petitions/petition/EN7346';
 
             // --- MP Email Content ---
             const MP_EMAIL_SUBJECT = 'Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)';
             
             // MP email body for mailto: (Removes the redundant "Subject:" line from the raw text)
+            // Note: CAPITALIZATION is used here for emphasis since mailto only supports plain text.
             const MP_EMAIL_BODY_FOR_MAILTO = emailTemplate.textContent.trim().split('\n').slice(2).join('\n').trim();
 
             // MP email body for Copy/Paste button (includes the subject line for web forms)
@@ -327,7 +332,7 @@ Yours sincerely,
             // --- Share Email Content (New Network Template with formatting) ---
             const SHARE_SUBJECT = 'Thank You! Your Petition [EN7346] Success Needs 5 Minutes More to Back the Dark Sky Preservation Parliament Action!';
             
-            // Share body with simulated formatting using line breaks and bolding/uppercase
+            // Share body uses strategic CAPITALIZATION and line breaks to simulate bolding/formatting in plain text
             const SHARE_BODY = `
 Dear Dark Sky Partners
 
@@ -364,6 +369,7 @@ Prepared and shared by the River Murray International Dark Sky Reserve
             
             // Function to copy text to clipboard
             function copyToClipboard(text) {
+                // Use document.execCommand('copy') for better iframe compatibility
                 const tempTextArea = document.createElement('textarea');
                 tempTextArea.value = text;
                 document.body.appendChild(tempTextArea);
@@ -379,10 +385,7 @@ Prepared and shared by the River Murray International Dark Sky Reserve
             // Function to generate the mailto link content
             function generateMailtoLink(subject, body, to = '') {
                 const encodedSubject = encodeURIComponent(subject);
-                // Simple replacement of Markdown bolding **TEXT** to all caps TEXT
-                // and replacing multiple spaces/line breaks with single space for URL encoding consistency
-                const formattedBody = body.replace(/\*\*(.*?)\*\*/g, (match, p1) => p1.toUpperCase()).trim();
-                const encodedBody = encodeURIComponent(formattedBody);
+                const encodedBody = encodeURIComponent(body.trim());
                 return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
             }
 
