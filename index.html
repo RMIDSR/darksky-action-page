@@ -3,49 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support Dark Sky Legislation - RMIDSR Action</title>
+    <title>Support Dark Sky Legislation - Action Page</title>
+    <!-- Load Google Fonts: League Spartan (Bold) and Montserrat (Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom styles for branding */
         :root {
-            --primary-color: #3f384d; /* RMIDSR Dark Sky Purple */
+            --primary-color: #3f384d; /* Dark Sky Purple */
             --light-bg: #ffffff; /* White background */
             --text-color: #1f2937; /* Dark Gray text */
         }
 
+        /* Set body font to Montserrat */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--light-bg);
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f7f7f7; /* Slightly off-white background for contrast */
             color: var(--text-color);
+        }
+
+        /* Custom class for headers using League Spartan */
+        .header-font {
+            font-family: 'League Spartan', sans-serif;
+        }
+        
+        /* Apply League Spartan to all main headings */
+        h1, h2, h3 {
+            font-family: 'League Spartan', sans-serif;
         }
 
         .action-container {
             max-width: 768px;
             margin: 2rem auto;
-            padding: 2rem 1rem;
             background-color: var(--light-bg);
             border-radius: 12px;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 15px -5px rgba(0, 0, 0, 0.04);
+            padding-bottom: 2rem;
         }
 
+        /* Step Card Styling */
         .step-card {
             background-color: #f7f7f7;
             border: 1px solid #e5e7eb;
-            padding: 1.25rem;
             border-radius: 8px;
-            margin-bottom: 1.5rem;
             display: flex;
             flex-direction: column;
-        }
-        
-        .step-card > * {
-            flex-grow: 0;
-        }
-
-        .step-card .button-wrapper {
-            margin-top: auto; /* Push button to the bottom */
-            padding-top: 1rem;
+            justify-content: space-between; 
         }
 
         /* Custom style for the branded buttons */
@@ -94,98 +98,118 @@
             white-space: pre-wrap; /* Preserve formatting */
         }
 
-        /* Responsive layout adjustments */
-        @media (min-width: 640px) {
-            .step-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
-            }
-            .step-card {
-                margin-bottom: 0;
-            }
+        /* Fixed Purple Banner Style */
+        .purple-banner {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 1rem;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            /* Negative margin to pull it up to the container edge */
+            margin-top: -2rem; 
         }
+
     </style>
 </head>
 <body>
 
     <div class="action-container">
 
-        <!-- Header -->
-        <h1 class="text-4xl font-bold text-center mb-2" style="color: var(--primary-color);">
-            ADVOCACY ACTION PAGE
-        </h1>
-        <h2 class="text-xl text-center font-semibold mb-8 text-gray-600">
-            SUPPORT TONY ZAPPIA and ADSA to LEAD THE DARK SKY MOVEMENT
-        </h2>
-        
-        <!-- Key Deadline - BRANDED BANNER (Fixed Colors) -->
-        <div class="text-white p-5 rounded-lg mb-6 border-l-4 shadow-sm" style="background-color: var(--primary-color); border-left-color: #a5a0b0;">
-            <p class="font-bold text-xl mb-2">Act Now: Critical Window Closing</p>
-            <p>Your local MP's support is crucial. We need to <strong>maximise</strong> support before the <strong>Petition Presentation</strong> on Monday. Please send your email by <strong>Monday, 24th November, 10:00 AM</strong>.</p>
-            <p class="mt-2 text-sm opacity-90"><strong>Why the deadline?</strong> Emails received before Monday morning will be logged by staff and used to update the final, powerful number of constituent supporters briefed to Mr. Zappia immediately before the Petition is formally presented.</p>
+        <!-- PRIMARY HEADER BANNER (Purple Background, White Text) -->
+        <div class="purple-banner text-center header-font">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-widest uppercase mb-1">
+                ADVOCACY ACTION PAGE
+            </h1>
+            <!-- SUBTITLE: Font size reduced to prevent awkward wrapping -->
+            <p class="text-lg sm:text-xl font-semibold mt-1 text-white/90">
+                National Legislation for Light Pollution Regulation and Dark Sky Preservation
+            </p>
         </div>
 
-        <p class="mb-4 text-gray-700 text-lg leading-relaxed">
-            The Member for Makin, Tony Zappia, is formally <strong>presenting a successful Petition</strong> in Federal Parliament, which calls for an investigation into national legislation to reduce light pollution. Your action is required <strong>immediately</strong> to secure your local MP's support for this vital step.
-        </p>
-
-        <!-- Petition Statement (Fixed Colors) -->
-        <div class="p-5 rounded-lg border mb-8 text-center font-medium leading-relaxed text-gray-800" style="background-color: #f9fafb; border-color: var(--primary-color);">
-            This historic moment, driven by the <strong>Australasian Dark Sky Alliance (ADSA)</strong>, is the direct result of a national petition that gathered more than <strong>12,000 signatures</strong> — a clear signal that Australians care deeply about protecting the night environment.
-        </div>
-
-        <!-- Action Steps Grid -->
-        <div class="step-grid">
-
-            <!-- Step 1: Find MP -->
-            <div class="step-card">
-                <div class="text-3xl font-bold mb-3" style="color: var(--primary-color);">Step 1</div>
-                <h3 class="text-xl font-semibold mb-4">Find MP's Contact Details</h3>
-                <p class="mb-4 text-sm text-gray-600 font-bold">Use this page to search for your local Federal MP's direct email address.</p>
-                <p class="text-xs text-gray-600 font-bold italic">
-                    If <strong>ONLY<strong> a web contact form is available: <strong>USE THIS FORM INSTEAD<strong>. Sending your support via the form is better than not contacting them at all!
-                </p>
-                <div class="button-wrapper">
-                    <a href="https://www.aph.gov.au/Senators_and_Members/Members" target="_blank" class="branded-button">
-                        Search for MP Contact Page &rarr;
-                    </a>
-                </div>
+        <!-- Main Content Starts Here -->
+        <div class="pt-8 px-4"> 
+            
+            <!-- Secondary Header (Purple Text on White) -->
+            <h2 class="text-xl text-center font-semibold mb-8 text-gray-600 header-font" style="color: var(--primary-color);">
+                SUPPORT TONY ZAPPIA and ADSA to LEAD THE DARK SKY MOVEMENT
+            </h2>
+            
+            <!-- Key Deadline - BRANDED BANNER -->
+            <div class="text-white p-5 rounded-lg mb-6 border-l-4 shadow-sm" style="background-color: var(--primary-color); border-left-color: #a5a0b0;">
+                <p class="font-bold text-xl mb-2">Act Now: Critical Window Closing</p>
+                <p>Your local MP's support is crucial. We need to <strong>maximise</strong> support before the <strong>Petition Presentation</strong> on Monday. Please send your email by <strong>Monday, 24th November, 10:00 AM</strong>.</p>
+                <p class="mt-2 text-sm opacity-90"><strong>Why the deadline?</strong> Emails received before Monday morning will be logged by staff and used to update the final, powerful number of constituent supporters briefed to Mr. Zappia immediately before the Petition is formally presented.</p>
             </div>
 
-            <!-- Step 2: Copy Email -->
-            <div class="step-card">
-                <div class="text-3xl font-bold mb-3" style="color: var(--primary-color);">Step 2</div>
-                <h3 class="text-xl font-semibold mb-4">Copy, Paste & Send</h3>
-                <p class="mb-6 text-sm text-gray-600">Copy the text below, paste it into a new email OR their web form (from Step 1).</p>
-                <div class="button-wrapper">
-                    <button id="copy-btn" class="branded-button copy-button">
-                        CLICK TO COPY EMAIL TEXT
-                    </button>
-                </div>
+            <p class="mb-4 text-gray-700 text-lg leading-relaxed">
+                The Member for Makin, Tony Zappia, is formally <strong>presenting a successful Petition</strong> in Federal Parliament, which calls for an investigation into national legislation to reduce light pollution. Your action is required <strong>immediately</strong> to secure your local MP's support for this vital step.
+            </p>
+
+            <!-- Petition Statement -->
+            <div class="p-5 rounded-lg border mb-8 text-center font-medium leading-relaxed text-gray-800" style="background-color: #f9fafb; border-color: var(--primary-color);">
+                This historic moment, driven by the <strong>Australasian Dark Sky Alliance (ADSA)</strong>, is the direct result of a national petition that gathered more than <strong>12,000 signatures</strong> — a clear signal that Australians care deeply about protecting the night environment.
             </div>
 
-            <!-- Step 3: Attach Documents -->
-            <div class="step-card">
-                <div class="text-3xl font-bold mb-3" style="color: var(--primary-color);">Step 3</div>
-                <h3 class="text-xl font-semibold mb-4">Attach Documents</h3>
-                <p class="mb-4 font-bold text-gray-800 text-sm">ESSENTIAL STEP: MPs need these documents for their internal briefing process. Download both PDFs below.</p>
-                <div class="button-wrapper">
-                    <a href="Briefing_Note_2025.pdf" download class="branded-button mb-3">
-                        Download Briefing Note (PDF)
-                    </a>
-                    <a href="ADSA_LP_Discussion_Paper.pdf" download class="branded-button">
-                        Download Discussion Paper (PDF)
-                    </a>
+            <!-- Action Steps Grid (Pure Tailwind for Responsiveness) -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+                <!-- Step 1: Find MP -->
+                <div class="step-card p-4">
+                    <div class="mb-4">
+                        <div class="text-3xl font-bold mb-3 header-font" style="color: var(--primary-color);">Step 1</div>
+                        <h3 class="text-xl font-semibold mb-4 header-font">Find MP's Contact Details</h3>
+                        <p class="mb-4 text-sm text-gray-600 font-bold">Use this page to search for your local Federal MP's direct email address.</p>
+                        <p class="text-xs text-gray-600 font-bold italic">
+                            If <strong>ONLY</strong> a web contact form is available: <strong>USE THIS FORM INSTEAD</strong>. Sending your support via the form is better than not contacting them at all!
+                        </p>
+                    </div>
+                    <!-- Button Wrapper uses Tailwind for bottom alignment -->
+                    <div class="mt-auto pt-4"> 
+                        <a href="https://www.aph.gov.au/Senators_and_Members/Members" target="_blank" class="branded-button">
+                            Search for MP Contact Page &rarr;
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Step 2: Copy Email -->
+                <div class="step-card p-4">
+                    <div class="mb-4">
+                        <div class="text-3xl font-bold mb-3 header-font" style="color: var(--primary-color);">Step 2</div>
+                        <h3 class="text-xl font-semibold mb-4 header-font">Copy, Paste & Send</h3>
+                        <p class="mb-6 text-sm text-gray-600">Copy the text below, paste it into a new email OR their web form (from Step 1).</p>
+                    </div>
+                    <!-- Button Wrapper uses Tailwind for bottom alignment -->
+                    <div class="mt-auto pt-4">
+                        <button id="copy-btn" class="branded-button copy-button">
+                            CLICK TO COPY EMAIL TEXT
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Attach Documents -->
+                <div class="step-card p-4">
+                    <div class="mb-4">
+                        <div class="text-3xl font-bold mb-3 header-font" style="color: var(--primary-color);">Step 3</div>
+                        <h3 class="text-xl font-semibold mb-4 header-font">Attach Documents</h3>
+                        <p class="mb-4 font-bold text-gray-800 text-sm">ESSENTIAL STEP: MPs need these documents for their internal briefing process. Download both PDFs below.</p>
+                    </div>
+                    <!-- Button Wrapper uses Tailwind for bottom alignment and spacing -->
+                    <div class="mt-auto pt-4 space-y-3">
+                        <a href="Briefing_Note_2025.pdf" download class="branded-button">
+                            Download Briefing Note (PDF)
+                        </a>
+                        <a href="ADSA_LP_Discussion_Paper.pdf" download class="branded-button">
+                            Download Discussion Paper (PDF)
+                        </a>
+                    </div>
+                </div>
+
             </div>
 
-        </div>
-
-        <!-- Copy-Paste Area -->
-        <div class="mt-8">
-            <h3 class="text-2xl font-semibold mb-4" style="color: var(--primary-color);">Email/Form Template (Copy and Paste)</h3>
-            <div id="email-template" class="copy-text-area">
+            <!-- Copy-Paste Area -->
+            <div class="mt-8">
+                <h3 class="text-2xl font-semibold mb-4 header-font" style="color: var(--primary-color);">Email/Form Template (Copy and Paste)</h3>
+                <div id="email-template" class="copy-text-area">
 Subject: Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)
 
 Dear [Insert MP's Name],
@@ -207,29 +231,30 @@ Yours sincerely,
 [Your Name]
 [Your Address]
 [Your Contact Information]
+                </div>
+                <p class="mt-4 text-sm text-gray-500 italic">
+                    Remember to replace the placeholders in brackets: [Insert MP's Name], [Your Name], [Your Address], and [Your Contact Information].
+                </p>
+                <p class="mt-2 text-sm text-red-600 font-bold italic">
+                    *CRITICAL*: If you used a web form, the office will receive your message, but not the attachments. You have still shown your support, which is the most important step for the Monday deadline!
+                </p>
             </div>
-            <p class="mt-4 text-sm text-gray-500 italic">
-                Remember to replace the placeholders in brackets: [Insert MP's Name], [Your Name], [Your Address], and [Your Contact Information].
-            </p>
-            <p class="mt-2 text-sm text-red-600 font-bold italic">
-                *CRITICAL*: If you used a web form, the office will receive your message, but not the attachments. You have still shown your support, which is the most important step for the Monday deadline!
-            </p>
-        </div>
 
-        <!-- Footer / Share -->
-        <div class="mt-10 pt-6 border-t border-gray-200 text-center">
-            <h4 class="text-lg font-semibold mb-3">Spread the Word!</h4>
-            <p class="mb-4">Quickly share this link with your like-minded dark sky buddies!</p>
-            <a href="mailto:?subject=URGENT%20ACTION%3A%20Support%20Dark%20Sky%20Legislation&body=Please%20take%20five%20minutes%20to%20write%20to%20your%20local%20MP%20to%20support%20national%20light%20pollution%20legislation.%20All%20the%20steps%20and%20the%20email%20template%20are%20here%3A%20https%3A%2F%2Frmidsr.github.io%2Fdarksky-action-page%2F" class="inline-flex items-center branded-button w-auto px-6" style="background-color: #7c768a;">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-                Share via Email/Social
-            </a>
-            
-            <!-- RMIDSR Credit Footer -->
-            <div class="mt-8 pt-4 text-xs text-gray-400 border-t border-gray-100">
-                <p>This Digital Advocacy Action Page was created by the <strong class="text-gray-500">River Murray International Dark Sky Reserve (RMIDSR)</strong> to support the ADSA and the broader Dark Sky Movement.</p>
+            <!-- Footer / Share -->
+            <div class="mt-10 pt-6 border-t border-gray-200 text-center px-4">
+                <h4 class="text-lg font-semibold mb-3 header-font">Spread the Word!</h4>
+                <p class="mb-4">Quickly share this link with your like-minded dark sky buddies!</p>
+                <a href="mailto:?subject=URGENT%20ACTION%3A%20Support%20Dark%20Sky%20Legislation&body=Please%20take%20five%20minutes%20to%20write%20to%20your%20local%20MP%20to%20support%20national%20light%20pollution%20legislation.%20All%20the%20steps%20and%20the%20email%20template%20are%20here%3A%20https%3A%2F%2Fexample.com%2Fdarksky-action-page%2F" class="inline-flex items-center branded-button w-auto px-6" style="background-color: #7c768a;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                    Share via Email/Social
+                </a>
+                
+                <!-- Updated Footer Credit: Removed the requested line. -->
+                <div class="mt-8 pt-4 text-xs text-gray-400 border-t border-gray-100">
+                    <p>This Digital Advocacy Action Page was created by the River Murray International Dark Sky Reserve (RMIDSR) to support the ADSA and the broader Dark Sky Movement.</p>
+                </div>
             </div>
         </div>
 
@@ -257,6 +282,7 @@ Yours sincerely,
             }
 
             copyBtn.addEventListener('click', () => {
+                // We use .trim() on textContent to get the clean text without extra surrounding spaces/newlines
                 const textToCopy = emailTemplate.textContent.trim();
                 copyToClipboard(textToCopy);
 
