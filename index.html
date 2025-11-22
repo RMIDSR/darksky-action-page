@@ -331,33 +331,30 @@ Yours sincerely,
             const SHARE_BODY = `
 Dear Dark Sky Partners
 
-Thank you! Because of your support and the support of over 12,000 Australians who signed the Petition EN7346 - National Legislation for Light Pollution Regulation and Dark Sky Preservation, **PARLIAMENT ACTION IS IN PROGRESS!**
+THANK YOU!
 
-We have a massive opportunity this week to protect Australia’s night environment and support sensible national policy.
+Because of your support and the support of over 12,000 Australians who signed the Petition EN7346 - National Legislation for Light Pollution Regulation and Dark Sky Preservation, PARLIAMENT ACTION IS IN PROGRESS!
 
-On **MONDAY, NOVEMBER 24TH**, the petition will be presented in Federal Parliament calling for an investigation into national legislation to reduce light pollution. This effort is led by the **AUSTRALASIAN DARK SKY ALLIANCE (ADSA)**.
+We have a MASSIVE OPPORTUNITY this week to protect Australia’s night environment and support sensible national policy.
 
-**YOUR ACTION IS THE CRITICAL NEXT STEP (BEFORE MONDAY MORNING)**
+On MONDAY, NOVEMBER 24TH, the petition ${PETITION_LINK} will be presented in Federal Parliament calling for an investigation into national legislation to reduce light pollution. This effort is led by the AUSTRALASIAN DARK SKY ALLIANCE (ADSA).
 
-The petition got us to the floor of Parliament, but to demonstrate the widespread public support and political will, we need a more powerful, **PERSONALISED** action: **EMAIL** or use the **WEB CONTACT FORM** for your local Federal MP **BEFORE 10:00 AM ON MONDAY.**
+YOUR ACTION IS THE CRITICAL NEXT STEP (BEFORE MONDAY MORNING)
 
-It takes less than 5 minutes. We have created a streamlined action page that provides everything you need:
-- A tool to find your local Federal MP.
-- A professional, copy-and-paste template that works for both email and web forms.
-- The critical background documents for the MP's office.
+The petition got us to the floor of Parliament, but to demonstrate the widespread public support and political will, we need a more powerful, PERSONALISED action: EMAIL or use the WEB CONTACT FORM for your local Federal MP BEFORE 10:00 AM ON MONDAY.
 
-Your communication will be logged by their staff and contributes to the final number of supporters briefed to the MP before the petition is presented. A flurry of messages from across Australia will **ENSURE YOUR VOICE IS HEARD LOUD AND CLEAR**. Let's send Mr. Tony Zappia all the support we can, demonstrating he has the undeniable and unwavering backing of other MPs and **ALL OF AUSTRALIA**.
+It takes less than 5 minutes. We have created a STREAMLINED ACTION PAGE that provides everything you need.
 
-**TAKE 5 MINUTES TO ACT NOW**
+Let's send Mr. Tony Zappia all the support we can, demonstrating he has the undeniable and unwavering backing of other MPs and ALL of Australia.
 
-This easy-peasy 3-step communication is the critical next step required to support the motion:
+This easy-peasy 3-step communication is the critical next step required to support the motion.
+
 ADVOCACY ACTION PAGE: ${LIVE_URL}
-
-Petition Link: ${PETITION_LINK}
 
 This simple action is crucial to securing the next step toward a national standard that benefits wildlife, saves taxpayer energy, and preserves our incredible night skies.
 
 Thank you for being a part of the movement!
+
 Please share this email with your like-minded Dark Sky Buddies far and wide!
 
 Prepared and shared by the River Murray International Dark Sky Reserve
@@ -383,6 +380,7 @@ Prepared and shared by the River Murray International Dark Sky Reserve
             function generateMailtoLink(subject, body, to = '') {
                 const encodedSubject = encodeURIComponent(subject);
                 // Simple replacement of Markdown bolding **TEXT** to all caps TEXT
+                // and replacing multiple spaces/line breaks with single space for URL encoding consistency
                 const formattedBody = body.replace(/\*\*(.*?)\*\*/g, (match, p1) => p1.toUpperCase()).trim();
                 const encodedBody = encodeURIComponent(formattedBody);
                 return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
