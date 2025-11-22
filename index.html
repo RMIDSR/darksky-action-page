@@ -312,28 +312,45 @@ Yours sincerely,
             
             // --- CONSTANTS ---
             const LIVE_URL = 'https://rmidsr.github.io/darksky-action-page/';
+            const PETITION_LINK = 'https://www.aph.gov.au/e-petitions/petition/EN7346';
 
-            // Text used in the MP email (Body and Subject)
+            // --- MP Email Content ---
             const MP_EMAIL_SUBJECT = 'Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)';
-            const MP_EMAIL_BODY_RAW = emailTemplate.textContent.trim(); // Use the raw, trimmed text from the hidden template
+            
+            // MP email body for mailto: (Removes the redundant "Subject:" line from the raw text)
+            const MP_EMAIL_BODY_FOR_MAILTO = emailTemplate.textContent.trim().split('\n').slice(2).join('\n').trim();
 
-            // Text used for sharing this page (Body and Subject) - ENHANCED MESSAGE
-            const SHARE_SUBJECT = '🚨 URGENT: Take 5 Minutes to Protect Our Night Skies by Monday 10:00 AM!';
+            // MP email body for Copy/Paste button (includes the subject line for web forms)
+            const MP_EMAIL_BODY_FOR_COPY = emailTemplate.textContent.trim();
+
+
+            // --- Share Email Content (New Network Template) ---
+            const SHARE_SUBJECT = 'Thank You! Your Petition [EN7346] Success Needs 5 Minutes More to Back the Dark Sky Preservation Parliament Action!';
+            
+            // Share body with bolding and link
             const SHARE_BODY = `
-It's a historic moment for the Dark Sky Movement in Australia!
+Dear Dark Sky Partners
 
-The Federal Petition on Light Pollution, driven by ADSA and supported by RMIDSR, is being formally presented in Parliament by Mr. Tony Zappia MP on Monday.
+**Thank you!** Because of your support and the support of over 12,000 Australians who signed the Petition EN7346 - National Legislation for Light Pollution Regulation and Dark Sky Preservation, **Parliament Action is in progress!**
 
-We need to build an immediate 'army' of advocates: constituents emailing their local MP to back this legislation. Emails before Monday morning will be logged to show maximum constituent support!
+We have a **massive opportunity** this week to protect Australia’s night environment and support sensible national policy.
+On **Monday, November 24th**, the petition ( ${PETITION_LINK} ) will be presented in Federal Parliament calling for an investigation into national legislation to reduce light pollution. This effort is led by the **Australasian Dark Sky Alliance (ADSA).**
+**Your Action is the Critical Next Step (Before Monday Morning)**
 
-TAKE ACTION NOW:
-1. Find your MP's email.
-2. Send the pre-filled support email (takes 2 minutes).
-3. Download and attach the two crucial briefing PDFs.
+The petition got us to the floor of Parliament, but to demonstrate the widespread public support and political will, we need a more powerful, **personalised** action: **email** or use the **web contact form** for your local Federal MP **before 10:00 AM on Monday.**
+It takes less than 5 minutes. We have created a **streamlined action page** that provides everything you need:
+* A tool to find your local Federal MP.
+* A professional, copy-and-paste template that works for both email and web forms.
+* The critical background documents for the MP's office.
+Your communication will be logged by their staff and contributes to the final number of supporters briefed to the MP before the petition is presented. **A flurry of messages from across Australia will ensure your voice is heard loud and clear.** Let's send Mr. Tony Zappia all the support we can, demonstrating he has the undeniable and unwavering backing of other MPs and ALL of Australia.
+**TAKE 5 MINUTES TO ACT NOW**
+This easy-peasy 3-step communication is the critical next step required to support the motion.
+**ADVOCACY ACTION PAGE:** ${LIVE_URL}
+This simple action is crucial to securing the next step toward a national standard that benefits wildlife, saves taxpayer energy, and preserves our incredible night skies.
+Thank you for being a part of the movement!
+Please share this email with your like-minded Dark Sky Buddies far and wide!
 
-All steps and materials are available here: ${LIVE_URL}
-
-Please act right now and share this link widely! Our night skies, wildlife, and energy resources depend on it.
+Prepared and shared by the River Murray International Dark Sky Reserve
 `;
 
             // --- FUNCTIONS ---
@@ -355,19 +372,20 @@ Please act right now and share this link widely! Our night skies, wildlife, and 
             // Function to generate the mailto link content
             function generateMailtoLink(subject, body, to = '') {
                 const encodedSubject = encodeURIComponent(subject);
-                const encodedBody = encodeURIComponent(body);
-                // For MP email, we leave 'to' blank so the user can fill it in.
+                // Use a custom function to handle bolding and correct line breaks for mailto
+                const formattedBody = body.replace(/\*\*(.*?)\*\*/g, (match, p1) => p1.toUpperCase()).trim();
+                const encodedBody = encodeURIComponent(formattedBody);
                 return `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
             }
 
             // --- EVENT LISTENERS ---
 
-            // 1. MP Email Button (Mailto link)
-            sendEmailBtn.href = generateMailtoLink(MP_EMAIL_SUBJECT, MP_EMAIL_BODY_RAW);
+            // 1. MP Email Button (Mailto link) - Uses clean body
+            sendEmailBtn.href = generateMailtoLink(MP_EMAIL_SUBJECT, MP_EMAIL_BODY_FOR_MAILTO);
 
-            // 2. Copy Button (Fallback for web forms)
+            // 2. Copy Button (Fallback for web forms) - Uses original full text including subject
             copyBtn.addEventListener('click', () => {
-                copyToClipboard(MP_EMAIL_BODY_RAW);
+                copyToClipboard(MP_EMAIL_BODY_FOR_COPY);
 
                 const originalText = copyBtn.textContent;
                 copyBtn.textContent = 'COPIED!';
@@ -379,7 +397,7 @@ Please act right now and share this link widely! Our night skies, wildlife, and 
                 }, 2000);
             });
             
-            // 3. Share Button (Mailto link with correct live URL and enhanced message)
+            // 3. Share Button (Mailto link with new network template)
             shareLink.href = generateMailtoLink(SHARE_SUBJECT, SHARE_BODY);
 
         });
