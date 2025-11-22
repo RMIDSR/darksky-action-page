@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support Dark Sky Legislation - Action Page</title>
     <!-- Load Google Fonts: League Spartan (Bold) and Montserrat (Body) -->
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght=700;800&family=Montserrat:wght=400;600&display=swap" rel="stylesheet">
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Font Awesome for Icons -->
@@ -101,17 +101,6 @@
             white-space: pre-wrap; /* Preserve formatting */
         }
 
-        /* Fixed Purple Banner Style */
-        .purple-banner {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem 1rem;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            /* Negative margin to pull it up to the container edge */
-            margin-top: -2rem; 
-        }
-        
         /* Social Button Styling */
         .social-button {
             background-color: var(--primary-color);
@@ -135,15 +124,19 @@
 
     <div class="action-container">
 
-        <!-- PRIMARY HEADER BANNER (Purple Background, White Text) -->
-        <div class="purple-banner text-center header-font">
-            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-widest uppercase mb-1">
-                ADVOCACY ACTION PAGE
-            </h1>
-            <!-- SUBTITLE: Font size optimized for clean wrapping -->
-            <p class="text-lg sm:text-xl font-semibold mt-1 text-white/90">
-                National Legislation for Light Pollution Regulation and Dark Sky Preservation
-            </p>
+        <!-- IMAGE HEADER BANNER: Replaces the purple text banner -->
+        <div class="header-image-container w-full" style="
+            border-top-left-radius: 12px; 
+            border-top-right-radius: 12px;
+            margin-top: -2rem; /* Aligns with the top of the action container */
+        ">
+            <!-- Ensure the image path matches the file you upload to GitHub -->
+            <img 
+                src="protect_the_night_header.png" 
+                alt="Protect the Night Advocacy Action Page Banner" 
+                class="w-full h-auto object-cover" 
+                style="border-top-left-radius: 12px; border-top-right-radius: 12px; display: block;"
+            />
         </div>
 
         <!-- Main Content Starts Here -->
@@ -181,8 +174,9 @@
                         <div class="text-3xl font-bold mb-3 header-font" style="color: var(--primary-color);">Step 1</div>
                         <h3 class="text-xl font-semibold mb-4 header-font">Find MP's Contact Details</h3>
                         <p class="mb-4 text-sm text-gray-600 font-bold">Use this page to search for your local Federal MP's direct email address.</p>
-                        <p class="text-xs text-gray-600 font-bold italic">
-                            If <strong>ONLY</strong> a web contact form is available: <strong>USE THIS FORM INSTEAD</strong>. Sending your support via the form is better than not contacting them at all!
+                        <!-- UPDATED INSTRUCTION FOR CLARITY -->
+                        <p class="text-xs text-red-700 font-bold italic">
+                            <i class="fas fa-exclamation-triangle mr-1"></i> If <strong>ONLY</strong> a web contact form is available, proceed to **Step 2** and use the "Copy Text Only" button to paste the message directly into the MP's form.
                         </p>
                     </div>
                     <!-- Button Wrapper uses Tailwind for bottom alignment -->
@@ -235,7 +229,14 @@
 
             <!-- Copy-Paste Area (Reference) -->
             <div class="mt-8">
-                <h3 class="text-2xl font-semibold mb-4 header-font" style="color: var(--primary-color);">Email Template (Reference Only)</h3>
+                <!-- CLARIFIED HEADING -->
+                <h3 class="text-2xl font-semibold mb-4 header-font" style="color: var(--primary-color);">
+                    Email Template (Copy/Paste for Web Forms)
+                </h3>
+                <!-- CLARIFIED INSTRUCTION -->
+                <p class="mb-4 text-sm text-gray-700 font-bold">
+                    If your MP only provides a web contact form (Step 1), use the "Copy Text Only" button in Step 2 to copy this full template and paste it into the message field.
+                </p>
                 <div id="email-template" class="copy-text-area">
 Subject: Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)
 
@@ -321,11 +322,11 @@ Yours sincerely,
             // --- MP Email Content ---
             const MP_EMAIL_SUBJECT = 'Support for National Light Pollution Legislation (Petition Presentation by Mr Tony Zappia MP)';
             
-            // MP email body for mailto: (Removes the redundant "Subject:" line from the raw text)
-            // Note: CAPITALIZATION is used here for emphasis since mailto only supports plain text.
-            const MP_EMAIL_BODY_FOR_MAILTO = emailTemplate.textContent.trim().split('\n').slice(2).join('\n').trim();
+            // MP email body for mailto: (Removes the Subject line and two blank lines for the clean body)
+            // Starts slicing from Dear [Insert MP's Name], which is line 4 (index 3) of the raw template text.
+            const MP_EMAIL_BODY_FOR_MAILTO = emailTemplate.textContent.trim().split('\n').slice(3).join('\n').trim();
 
-            // MP email body for Copy/Paste button (includes the subject line for web forms)
+            // MP email body for Copy/Paste button (This includes the Subject line which is necessary for web form users to copy)
             const MP_EMAIL_BODY_FOR_COPY = emailTemplate.textContent.trim();
 
 
@@ -394,7 +395,7 @@ Prepared and shared by the River Murray International Dark Sky Reserve
             // 1. MP Email Button (Mailto link) - Uses clean body
             sendEmailBtn.href = generateMailtoLink(MP_EMAIL_SUBJECT, MP_EMAIL_BODY_FOR_MAILTO);
 
-            // 2. Copy Button (Fallback for web forms) - Uses original full text including subject
+            // 2. Copy Button (Fallback for web forms) - Copies the entire template text
             copyBtn.addEventListener('click', () => {
                 copyToClipboard(MP_EMAIL_BODY_FOR_COPY);
 
